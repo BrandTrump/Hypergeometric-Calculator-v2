@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <nav className="py-6 bg-black/90 text-white fixed top-0 w-full border-b border-gray-500 z-50">
       <Container>
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col space-y-5 justify-between items-end md:items-center md:flex-row md:space-y-0">
           <Link
             href="/"
             className="font-bold text-xl hover:text-[#cbfd00] transition duration-150 ease-in-out"
@@ -18,7 +18,12 @@ function Navbar() {
             </div>
           </Link>
 
-          <p>GitHub Repo</p>
+          <Link
+            href={"https://github.com/BrandTrump/Hypergeometric-Calculator-v2"}
+            className="hover:text-[#cbfd00] transition duration-150 ease-in-out"
+          >
+            GitHub Repo
+          </Link>
         </div>
       </Container>
     </nav>
