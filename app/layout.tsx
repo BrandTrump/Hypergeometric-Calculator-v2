@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Yu-Gi-Oh! Calculator",
+  title: "Yu-Gi-Oh! Hypergeometric Calculator",
   description:
     "Hypergeometric calculator for Yu-Gi-Oh! that will allow players to calculate the probability of drawing particular cards from their deck.",
 };
