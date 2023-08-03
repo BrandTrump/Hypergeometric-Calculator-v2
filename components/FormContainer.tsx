@@ -46,7 +46,9 @@ function FormContainer() {
         <div className="p-6">
           {selectedCards.length === 0 ? (
             <div className="text-center">
-              <h1>Add cards from the preview!</h1>
+              <h1 className="font-semibold animate-pulse">
+                Add cards from the preview!
+              </h1>
             </div>
           ) : (
             <>
