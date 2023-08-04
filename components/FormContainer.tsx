@@ -4,11 +4,13 @@ import { calculateProbability } from "@/helpers/calculateProbability";
 import { getDuplicates } from "@/helpers/getDuplicates";
 import { useCardStore } from "@/store/card-store";
 import { FormEvent } from "react";
+import RemoveAllButton from "./RemoveAllButton";
 
 function FormContainer() {
   const {
     selectedCards,
     uploadedCardIds,
+    setCardPreview,
     setMax,
     setMin,
     setAmt,
@@ -70,7 +72,12 @@ function FormContainer() {
                 key={card.id}
                 className="flex justify-between space-y-4 items-center"
               >
-                <h1 className="text-white font-semibold">{card.name}</h1>
+                <h1
+                  className="text-white font-semibold hover:text-[#cbfd00] transition duration-200 cursor-pointer"
+                  onClick={() => setCardPreview(card)}
+                >
+                  {card.name}
+                </h1>
                 <div className="flex space-x-1 md:space-x-10 items-center">
                   <input
                     type="number"
@@ -149,13 +156,16 @@ function FormContainer() {
                   onChange={(e) => setHandSize(parseInt(e.target.value))}
                 />
               </div>
-              <button
-                type="submit"
-                disabled={selectedCards.length === 0}
-                className="bg-[#cbfd00] border border-black rounded-md font-semibold hover:bg-[#cafd00a2] transition duration-200 disabled:bg-[#cafd00a2] disabled:cursor-not-allowed px-3 py-1 text-black"
-              >
-                Calculate
-              </button>
+              <div className="md:space-x-2">
+                <RemoveAllButton />
+                <button
+                  type="submit"
+                  disabled={selectedCards.length === 0}
+                  className="bg-[#cbfd00] border border-black rounded-md font-semibold hover:bg-[#cafd00a2] transition duration-200 disabled:bg-[#cafd00a2] disabled:cursor-not-allowed px-3 py-1 text-black"
+                >
+                  Calculate
+                </button>
+              </div>
             </div>
           </form>
         </div>
