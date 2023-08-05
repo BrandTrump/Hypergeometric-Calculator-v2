@@ -1,6 +1,3 @@
-import math from "mathjs";
-import { getDuplicates } from "./getDuplicates";
-
 export function calculateProbability(
   amt: number[],
   min: number[],
@@ -8,7 +5,7 @@ export function calculateProbability(
   handSize: number,
   deckSize: number
 ) {
-  let totalProbability = 0;
+  let totalProbability = 1; // Initialize to 1 instead of 0
 
   // Calculate probability for each card type
   for (let i = 0; i < amt.length; i++) {
@@ -30,7 +27,7 @@ export function calculateProbability(
       }
     }
 
-    totalProbability += cardTypeProbability;
+    totalProbability *= cardTypeProbability; // Multiply instead of adding
   }
 
   return (totalProbability * 100).toFixed(2);
