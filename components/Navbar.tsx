@@ -14,7 +14,7 @@ function Navbar() {
           >
             <div className="flex items-center space-x-2">
               <Image src={logo} alt="logo" width={125} />
-              <span>Hypergeometric Calculator</span>
+              <span className="text-2xl">Hypergeometric Calculator</span>
             </div>
           </Link>
 
