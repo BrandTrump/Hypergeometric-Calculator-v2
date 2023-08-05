@@ -24,6 +24,9 @@ interface CardStore {
   resetPreviewState: () => void;
   resetSelectedCardState: () => void;
   resetCalculationState: () => void;
+  resetAmtState: () => void;
+  resetMinState: () => void;
+  resetMaxState: () => void;
 }
 
 const initialPreviewState = {
@@ -50,10 +53,25 @@ const initialCalculationState = {
   calculation: 0,
 };
 
+const initialAmtState = {
+  amt: [0],
+};
+
+const initialMinState = {
+  min: [0],
+};
+
+const initialMaxState = {
+  max: [0],
+};
+
 export const useCardStore = create<CardStore>((set) => ({
   ...initialPreviewState,
   ...initialSelectedCardState,
   ...initialCalculationState,
+  ...initialAmtState,
+  ...initialMinState,
+  ...initialMaxState,
 
   cardList: {
     data: [],
@@ -102,4 +120,7 @@ export const useCardStore = create<CardStore>((set) => ({
   resetPreviewState: () => set(initialPreviewState),
   resetSelectedCardState: () => set(initialSelectedCardState),
   resetCalculationState: () => set(initialCalculationState),
+  resetAmtState: () => set(initialAmtState),
+  resetMinState: () => set(initialMinState),
+  resetMaxState: () => set(initialMaxState),
 }));
