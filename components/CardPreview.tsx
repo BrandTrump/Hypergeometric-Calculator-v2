@@ -17,6 +17,12 @@ function CardPreview() {
     setMax,
   } = useCardStore();
 
+  const cardColor = {
+    monster: "#9f5e1dc0",
+    trap: "#af237eb9",
+    spell: "#008176b3",
+  };
+
   const addSelectedCard = () => {
     const cardExists = selectedCards.some((card) => card.id === cardPreview.id);
 
@@ -47,7 +53,16 @@ function CardPreview() {
   };
   return (
     <section className="border border-gray-500 bg-gradient-to-r from-black/90 via-sky-900/90 to-black/90 mt-10 w-full md:w-1/3">
-      <div className="p-2 bg-[#9f5f1d]/75 mb-2">
+      <div
+        className="p-2 mb-2"
+        style={
+          cardPreview.type === "Spell Card"
+            ? { backgroundColor: `${cardColor.spell}` }
+            : cardPreview.type === "Trap Card"
+            ? { backgroundColor: `${cardColor.trap}` }
+            : { backgroundColor: `${cardColor.monster}` }
+        }
+      >
         <h1 className="font-semibold text-white text-lg">{cardPreview.name}</h1>
       </div>
 
@@ -123,7 +138,16 @@ function CardPreview() {
         )}
       </div>
 
-      <div className="flex items-center p-2 bg-[#9f5f1d]/75">
+      <div
+        className="flex items-center p-2"
+        style={
+          cardPreview.type === "Spell Card"
+            ? { backgroundColor: `${cardColor.spell}` }
+            : cardPreview.type === "Trap Card"
+            ? { backgroundColor: `${cardColor.trap}` }
+            : { backgroundColor: `${cardColor.monster}` }
+        }
+      >
         <h2 className="font-semibold text-white">[{cardPreview.type}]</h2>
       </div>
       <div className="p-4">
