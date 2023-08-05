@@ -143,7 +143,7 @@ function FormContainer() {
                 </div>
               </div>
             ))}
-            <div className="flex justify-between my-10 items-center border-t pt-4">
+            <div className="flex flex-col md:flex-row justify-between my-10 items-center border-t pt-4 space-y-4 md:space-y-0">
               <div className="space-x-5">
                 <label>Hand Size:</label>
                 <input
@@ -156,12 +156,12 @@ function FormContainer() {
                   onChange={(e) => setHandSize(parseInt(e.target.value))}
                 />
               </div>
-              <div className="md:space-x-2">
+              <div className="flex flex-col w-full space-y-2 md:space-y-0 md:w-auto items-end md:flex-row md:space-x-2">
                 <RemoveAllButton />
                 <button
                   type="submit"
                   disabled={selectedCards.length === 0}
-                  className="bg-[#cbfd00] border border-black rounded-md font-semibold hover:bg-[#cafd00a2] transition duration-200 disabled:bg-[#cafd00a2] disabled:cursor-not-allowed px-3 py-1 text-black"
+                  className="bg-[#cbfd00] border border-black rounded-md font-semibold hover:bg-[#cafd00a2] transition duration-200 disabled:bg-[#cafd00a2] disabled:cursor-not-allowed px-3 py-1 text-black w-full md:w-auto"
                 >
                   Calculate
                 </button>
