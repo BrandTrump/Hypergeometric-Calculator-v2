@@ -2,10 +2,12 @@
 import { useCardStore } from "@/store/card-store";
 
 function RemoveAllButton() {
-  const { selectedCards, resetSelectedCardState } = useCardStore();
+  const { selectedCards, resetSelectedCardState, resetCalculationState } =
+    useCardStore();
 
   const handleRemoveAll = () => {
     resetSelectedCardState();
+    resetCalculationState();
   };
 
   return (
