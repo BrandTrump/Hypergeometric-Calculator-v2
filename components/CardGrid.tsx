@@ -24,7 +24,7 @@ function CardGrid({ cardData, deckSize, cardIds }: CardGridProps) {
 
   return (
     <>
-      <main className="border border-gray-500 bg-gradient-to-r from-black/90 via-sky-900/90 to-black/90 mt-32">
+      <main className="border border-gray-500 bg-gradient-to-r from-black/90 via-sky-900/90 to-black/90 mt-44 md:mt-32">
         <div className="p-2 bg-gray-800 mb-2">
           <h1 className="font-semibold text-white">Deck</h1>
         </div>
@@ -45,12 +45,13 @@ function CardGrid({ cardData, deckSize, cardIds }: CardGridProps) {
                   : ""}
               </h1>
               {/* <Image
-              src={cardImage}
-              alt="card"
-              width={100}
-              height={100}
-              className="hover:scale-105 transition duration-100 cursor-pointer"
-            /> */}
+                src={card.card_images[0].image_url_small}
+                alt="card"
+                width={100}
+                height={100}
+                onClick={() => setCardPreview(card)}
+                className="hover:scale-105 transition duration-100 cursor-pointer rounded-sm"
+              /> */}
             </div>
           ))}
         </section>
