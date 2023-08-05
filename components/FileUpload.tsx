@@ -28,7 +28,7 @@ function FileUpload() {
   }
 
   return (
-    <div className="flex items-center justify-center w-full">
+    <div className="flex items-center justify-center w-full mt-14 md:mt-0">
       <label
         htmlFor="dropzone-file"
         className="flex flex-col items-center justify-center w-full h-64 border-2  border-dashed rounded-lg cursor-pointer border-gray-500 bg-gradient-to-r from-black/90 via-sky-900/90 to-black/90 mt-32"
