@@ -29,26 +29,37 @@ function CardPreview() {
     if (!cardExists) {
       setSelectedCards([...selectedCards, cardPreview]);
     }
-
-    console.log(`amt: ${amt} min: ${min} max: ${max}`);
   };
 
   const removeSelectedCard = () => {
-    const cardExists = selectedCards.some((card) => card.id === cardPreview.id);
+    const cardToRemove = selectedCards.find(
+      (card) => card.id === cardPreview.id
+    );
 
-    if (cardExists) {
+    if (cardToRemove) {
       const updatedSelectedCards = selectedCards.filter(
         (card) => card.id !== cardPreview.id
       );
 
       setSelectedCards(updatedSelectedCards);
-      amt.pop();
-      min.pop();
-      max.pop();
-      setAmt(amt);
-      setMin(min);
-      setMax(max);
-      console.log(`amt: ${amt} min: ${min} max: ${max}`);
+
+      const cardIndex = selectedCards.findIndex(
+        (card) => card.id === cardPreview.id
+      );
+
+      if (cardIndex !== -1) {
+        const updatedAmt = [...amt];
+        const updatedMin = [...min];
+        const updatedMax = [...max];
+
+        updatedAmt.splice(cardIndex, 1);
+        updatedMin.splice(cardIndex, 1);
+        updatedMax.splice(cardIndex, 1);
+
+        setAmt(updatedAmt);
+        setMin(updatedMin);
+        setMax(updatedMax);
+      }
     }
   };
   return (
