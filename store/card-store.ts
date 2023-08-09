@@ -21,6 +21,8 @@ interface CardStore {
   setHandSize: (handSize: number) => void;
   deckSize: number;
   setDeckSize: (handSize: number) => void;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
   resetPreviewState: () => void;
   resetSelectedCardState: () => void;
   resetCalculationState: () => void;
@@ -42,6 +44,7 @@ const initialPreviewState = {
     race: "",
     attribute: "",
     card_images: [],
+    card_prices: [],
   },
 };
 
@@ -90,6 +93,7 @@ export const useCardStore = create<CardStore>((set) => ({
     race: "",
     attribute: "",
     card_images: [],
+    card_prices: [],
   },
   setCardPreview: (cardPreview: CardData) => set({ cardPreview }),
 
@@ -116,6 +120,9 @@ export const useCardStore = create<CardStore>((set) => ({
 
   deckSize: 0,
   setDeckSize: (deckSize: number) => set({ deckSize }),
+
+  isOpen: false,
+  setIsOpen: (isOpen: boolean) => set({ isOpen }),
 
   resetPreviewState: () => set(initialPreviewState),
   resetSelectedCardState: () => set(initialSelectedCardState),
