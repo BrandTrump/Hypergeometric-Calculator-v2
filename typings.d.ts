@@ -5,6 +5,14 @@ interface CardImage {
   image_url_cropped: string;
 }
 
+interface CardPrices {
+  cardmarket_price: string;
+  tcgplayer_price: string;
+  ebay_price: string;
+  amazon_price: string;
+  coolstuffinc_price: string;
+}
+
 interface CardData {
   id: number;
   name: string;
@@ -17,6 +25,7 @@ interface CardData {
   race: string;
   attribute: string;
   card_images: CardImage[];
+  card_prices: CardPrices[];
 }
 
 interface CardInformation {
