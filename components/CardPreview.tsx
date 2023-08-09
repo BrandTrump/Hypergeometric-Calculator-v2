@@ -1,8 +1,8 @@
 "use client";
-import cardImg from "@/assets/card.jpg";
 import level from "@/assets/level.png";
 import Image from "next/image";
 import { useCardStore } from "@/store/card-store";
+import CardModal from "./CardModal";
 
 function CardPreview() {
   const {
@@ -78,13 +78,7 @@ function CardPreview() {
       </div>
 
       <div className="p-4 flex justify-between gap-2">
-        <Image
-          src={cardImg}
-          alt="card"
-          width={200}
-          height={200}
-          className="rounded-md"
-        />
+        <CardModal />
         {cardPreview.type !== "Spell Card" &&
         cardPreview.type !== "Trap Card" ? (
           <div className="flex flex-col justify-between">
