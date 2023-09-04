@@ -52,17 +52,10 @@ function FormContainer() {
                 Add cards from the preview!
               </h1>
             </div>
-          ) : (
-            <>
-              <div className="flex justify-end space-x-5 md:space-x-20 mr-4">
-                <h2>Amt</h2>
-                <h2>Min</h2>
-                <h2>Max</h2>
-              </div>
-            </>
-          )}
+          ) : null}
 
           <form
+            className=""
             onSubmit={(e) =>
               handleCalculation(e, amt, min, max, handSize, deckSize)
             }
@@ -70,7 +63,7 @@ function FormContainer() {
             {selectedCards.map((card, i) => (
               <div
                 key={card.id}
-                className="flex justify-between space-y-4 items-center"
+                className="flex flex-col md:flex-row justify-between space-y-2 md:space-y-4 items-center border-x border-[#cbfd00] bg-[#cbfd00]/10 my-3 md:px-3"
               >
                 <h1
                   className="text-white font-semibold hover:text-[#cbfd00] transition duration-200 cursor-pointer"
@@ -78,68 +71,77 @@ function FormContainer() {
                 >
                   {card.name}
                 </h1>
-                <div className="flex space-x-1 md:space-x-10 items-center">
-                  <input
-                    type="number"
-                    max={
-                      getDuplicates(uploadedCardIds)[card.id] > 1
-                        ? getDuplicates(uploadedCardIds)[card.id]
-                        : 1
-                    }
-                    min={1}
-                    placeholder={
-                      getDuplicates(uploadedCardIds)[card.id] > 1
-                        ? `${getDuplicates(uploadedCardIds)[card.id]}`
-                        : "1"
-                    }
-                    className="bg-gray-800"
-                    required
-                    onChange={(e) => {
-                      const newAmt: any = [...amt];
-                      newAmt[i] = parseInt(e.target.value);
-                      setAmt(newAmt);
-                    }}
-                  />
+                <div className="flex space-x-1 md:space-x-10 items-center w-full justify-around md:w-auto pb-6 md:pb-0">
+                  <div className="flex flex-col items-center">
+                    <label>Amt</label>
+                    <input
+                      type="number"
+                      max={
+                        getDuplicates(uploadedCardIds)[card.id] > 1
+                          ? getDuplicates(uploadedCardIds)[card.id]
+                          : 1
+                      }
+                      min={1}
+                      placeholder={
+                        getDuplicates(uploadedCardIds)[card.id] > 1
+                          ? `${getDuplicates(uploadedCardIds)[card.id]}`
+                          : "1"
+                      }
+                      className="bg-gray-800"
+                      required
+                      onChange={(e) => {
+                        const newAmt: any = [...amt];
+                        newAmt[i] = parseInt(e.target.value);
+                        setAmt(newAmt);
+                      }}
+                    />
+                  </div>
 
-                  <input
-                    type="number"
-                    max={
-                      getDuplicates(uploadedCardIds)[card.id] > 1
-                        ? getDuplicates(uploadedCardIds)[card.id]
-                        : 1
-                    }
-                    min={1}
-                    placeholder="1"
-                    className="bg-gray-800"
-                    required
-                    onChange={(e) => {
-                      const newAmt: any = [...min];
-                      newAmt[i] = parseInt(e.target.value);
-                      setMin(newAmt);
-                    }}
-                  />
+                  <div className="flex flex-col items-center">
+                    <label>Min</label>
+                    <input
+                      type="number"
+                      max={
+                        getDuplicates(uploadedCardIds)[card.id] > 1
+                          ? getDuplicates(uploadedCardIds)[card.id]
+                          : 1
+                      }
+                      min={1}
+                      placeholder="1"
+                      className="bg-gray-800"
+                      required
+                      onChange={(e) => {
+                        const newAmt: any = [...min];
+                        newAmt[i] = parseInt(e.target.value);
+                        setMin(newAmt);
+                      }}
+                    />
+                  </div>
 
-                  <input
-                    type="number"
-                    max={
-                      getDuplicates(uploadedCardIds)[card.id] > 1
-                        ? getDuplicates(uploadedCardIds)[card.id]
-                        : 1
-                    }
-                    min={1}
-                    placeholder={
-                      getDuplicates(uploadedCardIds)[card.id] > 1
-                        ? `${getDuplicates(uploadedCardIds)[card.id]}`
-                        : "1"
-                    }
-                    className="bg-gray-800"
-                    required
-                    onChange={(e) => {
-                      const newAmt: any = [...max];
-                      newAmt[i] = parseInt(e.target.value);
-                      setMax(newAmt);
-                    }}
-                  />
+                  <div className="flex flex-col items-center">
+                    <label>Max</label>
+                    <input
+                      type="number"
+                      max={
+                        getDuplicates(uploadedCardIds)[card.id] > 1
+                          ? getDuplicates(uploadedCardIds)[card.id]
+                          : 1
+                      }
+                      min={1}
+                      placeholder={
+                        getDuplicates(uploadedCardIds)[card.id] > 1
+                          ? `${getDuplicates(uploadedCardIds)[card.id]}`
+                          : "1"
+                      }
+                      className="bg-gray-800"
+                      required
+                      onChange={(e) => {
+                        const newAmt: any = [...max];
+                        newAmt[i] = parseInt(e.target.value);
+                        setMax(newAmt);
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             ))}

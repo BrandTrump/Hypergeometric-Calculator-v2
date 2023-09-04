@@ -32,12 +32,12 @@ function CardGrid({ cardData, deckSize, cardIds }: CardGridProps) {
           <h2 className="font-semibold text-white">Main Deck</h2>
           <p className="font-semibold text-white ml-12">{deckSize}</p>
         </div>
-        <section className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-6 p-3">
+        <section className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-6 p-3 max-h-96 overflow-y-auto md:max-h-full">
           {cardData.data.map((card: CardData) => (
             <div key={card.id}>
               <h1
                 onClick={() => setCardPreview(card)}
-                className="text-white h-32 w-24 bg-pink-600 hover:scale-105 transition duration-100 cursor-pointer rounded-sm active:bg-pink-900"
+                className="text-white h-40 w-full md:h-32 bg-pink-600 hover:scale-105 transition duration-100 cursor-pointer rounded-sm active:bg-pink-900"
               >
                 {card.name}{" "}
                 {getDuplicates(cardIds)[card.id] > 1
