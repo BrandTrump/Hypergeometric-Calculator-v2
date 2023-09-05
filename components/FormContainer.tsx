@@ -87,7 +87,7 @@ function FormContainer() {
                           ? `${getDuplicates(uploadedCardIds)[card.id]}`
                           : "1"
                       }
-                      className="bg-gray-800"
+                      className="bg-gray-800 text-center"
                       required
                       onChange={(e) => {
                         const newAmt: any = [...amt];
@@ -108,7 +108,7 @@ function FormContainer() {
                       }
                       min={1}
                       placeholder="1"
-                      className="bg-gray-800"
+                      className="bg-gray-800 text-center"
                       required
                       onChange={(e) => {
                         const newAmt: any = [...min];
@@ -133,7 +133,7 @@ function FormContainer() {
                           ? `${getDuplicates(uploadedCardIds)[card.id]}`
                           : "1"
                       }
-                      className="bg-gray-800"
+                      className="bg-gray-800 text-center"
                       required
                       onChange={(e) => {
                         const newAmt: any = [...max];
@@ -153,7 +153,7 @@ function FormContainer() {
                   max={10}
                   min={1}
                   placeholder="5"
-                  className="bg-gray-800"
+                  className="bg-gray-800 text-center"
                   required
                   onChange={(e) => setHandSize(parseInt(e.target.value))}
                 />
