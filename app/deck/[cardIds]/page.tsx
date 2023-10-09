@@ -12,11 +12,11 @@ async function DeckPage({ params }: { params: { cardIds: string } }) {
   return (
     <Container>
       <CardGrid cardData={cardData} deckSize={deckSize} cardIds={cardArr} />
-      <section className="grid grid-cols-4 h-[30em] border-orange-500 border-2 divide-orange-500 divide-x-2">
+      <section className="grid grid-cols-4 border-orange-500 border-2 divide-orange-500 divide-x-2 bg-gradient-to-r from-black/90 via-sky-900/90 to-black/90">
         <CardSearch />
         <DeckList cardData={cardData} />
-        <div className="bg-purple-600"></div>
-        <div className="bg-yellow-400"></div>
+        <div></div>
+        <div></div>
       </section>
     </Container>
   );
