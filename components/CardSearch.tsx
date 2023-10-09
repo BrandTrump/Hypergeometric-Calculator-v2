@@ -15,14 +15,16 @@ function CardSearch() {
     return setSearchedData(searchData);
   };
   return (
-    <section className="bg-green-500 p-4">
-      <form onSubmit={handleSearch}>
+    <section className="p-3">
+      <form onSubmit={handleSearch} className="flex max-w-full relative mb-4">
         <input
           type="text"
-          className="text-black"
+          className="text-black w-full"
           onChange={(e) => setCardSearch(e.target.value)}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="absolute bg-black right-0 px-2">
+          Search
+        </button>
       </form>
 
       {searchedData && <SearchedCard searchedData={searchedData} />}
