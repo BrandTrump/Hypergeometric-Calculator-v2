@@ -4,9 +4,14 @@ type DeckListProps = {
 
 function DeckList({ cardData }: DeckListProps) {
   return (
-    <article className="bg-blue-500 p-2">
+    <article className="p-2 space-y-2">
       {cardData.data.map((card: CardData) => (
-        <h1 key={card.id}>{card.name}</h1>
+        <div
+          key={card.id}
+          className="bg-white border-black border rounded-lg p-2 text-center"
+        >
+          <h1 className="text-black">{card.name}</h1>
+        </div>
       ))}
     </article>
   );

@@ -4,9 +4,14 @@ type SearchedCardProps = {
 
 function SearchedCard({ searchedData }: SearchedCardProps) {
   return (
-    <div>
+    <div className="space-y-2">
       {searchedData.data.slice(1, 10).map((card: CardData) => (
-        <h1 key={card.id}>{card.name}</h1>
+        <div
+          key={card.id}
+          className="bg-white border-black border rounded-lg p-2 text-center"
+        >
+          <h1 className="text-black">{card.name}</h1>
+        </div>
       ))}
     </div>
   );
