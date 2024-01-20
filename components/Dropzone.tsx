@@ -44,7 +44,7 @@ function Dropzone() {
       maxSize={maxSize}
       onDrop={onDrop}
       multiple={false}
-      accept={{ "application/ydk": [".ydk"] }}
+      accept={{ "application/.ydk": [".ydk"] }}
     >
       {({
         getRootProps,
@@ -68,8 +68,17 @@ function Dropzone() {
               )}
             >
               <input {...getInputProps()} />
-              {!isDragActive && "Click here or drop a file to upload!"}
-              {isDragActive && "Drop to upload this file!"}
+              {!isDragActive && (
+                <div className="text-center">
+                  <p className="font-light">
+                    Click here or drop a <span className="font-bold">.ydk</span>{" "}
+                    file to upload!
+                  </p>
+                  <em>(Only .ydk files will be accepted)</em>
+                </div>
+              )}
+              {isDragActive && !isDragReject && "Drop to upload this file!"}
+              {isDragReject && "File type not accepted, sorry!"}
               {isFileTooLarge && (
                 <div className="text-danger mt-2">File is too large.</div>
               )}
