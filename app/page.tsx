@@ -1,11 +1,10 @@
-import CardGrid from "@/components/CardGrid";
 import Container from "@/components/Container";
-import FileUpload from "@/components/FileUpload";
+import Dropzone from "@/components/Dropzone";
 
 export default function Home() {
   return (
     <Container>
-      <FileUpload />
+      <Dropzone />
       <section className="border border-gray-500 bg-gradient-to-r from-black/90 via-sky-900/90 to-black/90 mt-20 mb-10 md:mb-0">
         <div className="p-4 bg-gray-800 mb-2">
           <h1 className="font-semibold text-white text-2xl">Information</h1>
