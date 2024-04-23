@@ -12,29 +12,41 @@ function Dropzone() {
 
   const onDrop = (acceptedFiles: File[]) => {
     acceptedFiles.forEach((file) => {
-      const reader = new FileReader();
+      // Check if the file type is valid (application/octet-stream for YDK files)
+      if (file.name.endsWith(".ydk")) {
+        const reader = new FileReader();
 
-      // Add toast notifications
-      reader.onabort = () => console.log("file reading was aborted");
-      reader.onerror = () => console.log("file reading has failed");
-      reader.onload = handleFileRead;
-      reader.readAsText(file);
+        // Add toast notifications
+        reader.onabort = () => console.log("file reading was aborted");
+        reader.onerror = () => console.log("file reading has failed");
+        reader.onload = handleFileRead;
+        reader.readAsText(file);
+      } else {
+        // Handle invalid file type (display an error message or log it)
+        toast.error("Invalid file type!");
+      }
     });
   };
 
   function handleFileRead(e: ProgressEvent<FileReader>) {
-    if (loading) return;
-    if (!e.target) return;
+    try {
+      if (loading) return;
+      if (!e.target) return;
 
-    setLoading(true);
-    const toastId = toast.loading("Loading file...");
+      setLoading(true);
+      const toastId = toast.loading("Loading file...");
 
-    const content = e.target.result;
-    const mainDeck = parseYDK(content);
-    router.push(`/deck/${mainDeck}`);
+      const content = e.target.result;
+      const mainDeck = parseYDK(content);
+      router.push(`/deck/${mainDeck}`);
 
-    toast.success("File uploaded successfully!", { id: toastId });
-    setLoading(false);
+      toast.success("File uploaded successfully!", { id: toastId });
+    } catch (error) {
+      // Handle the error here, you might want to log it or display an error message
+      console.error("An error occurred while processing the file:", error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   const maxSize = 20971520;
@@ -44,15 +56,9 @@ function Dropzone() {
       maxSize={maxSize}
       onDrop={onDrop}
       multiple={false}
-      accept={{ "application/.ydk": [".ydk"] }}
+      // accept={{ "application/.ydk": [".ydk"] }}
     >
-      {({
-        getRootProps,
-        getInputProps,
-        isDragActive,
-        isDragReject,
-        fileRejections,
-      }) => {
+      {({ getRootProps, getInputProps, isDragActive, fileRejections }) => {
         const isFileTooLarge =
           fileRejections.length > 0 && fileRejections[0].file.size > maxSize;
 
@@ -77,8 +83,7 @@ function Dropzone() {
                   <em>(Only .ydk files will be accepted)</em>
                 </div>
               )}
-              {isDragActive && !isDragReject && "Drop to upload this file!"}
-              {isDragReject && "File type not accepted, sorry!"}
+              {isDragActive && "Drop to upload this file!"}
               {isFileTooLarge && (
                 <div className="text-danger mt-2">File is too large.</div>
               )}

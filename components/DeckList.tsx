@@ -1,10 +1,9 @@
-type DeckListProps = {
-  cardData: CardInformation;
-};
+import { getCardData } from "@/helpers/getCardData";
 
-function DeckList({ cardData }: DeckListProps) {
+async function DeckList({ cardIds }: { cardIds: string }) {
+  const cardData = await getCardData(cardIds);
   return (
-    <article className="p-2 space-y-2">
+    <article className="p-2 space-y-2 ">
       {cardData.data.map((card: CardData) => (
         <div
           key={card.id}

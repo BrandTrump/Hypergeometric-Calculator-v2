@@ -1,8 +1,9 @@
 "use client";
 
 import { getCardSearch } from "@/helpers/getCardSearch";
-import { FormEvent, useState } from "react";
+import { FormEvent, Suspense, useState } from "react";
 import SearchedCard from "./SearchedCard";
+import toast from "react-hot-toast";
 
 function CardSearch() {
   const [cardSearch, setCardSearch] = useState("");
@@ -11,8 +12,12 @@ function CardSearch() {
   );
   const handleSearch = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const searchData = await getCardSearch(cardSearch);
-    return setSearchedData(searchData);
+    try {
+      const searchData = await getCardSearch(cardSearch);
+      return setSearchedData(searchData);
+    } catch (error) {
+      toast.error("No cards found!");
+    }
   };
   return (
     <section className="p-3">
@@ -26,8 +31,9 @@ function CardSearch() {
           Search
         </button>
       </form>
-
-      {searchedData && <SearchedCard searchedData={searchedData} />}
+      <Suspense fallback={<div>Loading...</div>}>
+        {searchedData && <SearchedCard searchedData={searchedData} />}
+      </Suspense>
     </section>
   );
 }
