@@ -17,14 +17,14 @@ export default function Draggable({ children, id }: DraggableProps) {
       }
     : undefined;
   return (
-    <button
+    <div
       ref={setNodeRef}
       style={style}
       {...listeners}
       {...attributes}
-      className="bg-white text-black p-2 w-full rounded-lg"
+      className="border border-[#cbfd00] bg-[#cbfd00]/10 md:px-3 py-2"
     >
       {children}
-    </button>
+    </div>
   );
 }
