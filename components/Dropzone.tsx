@@ -40,12 +40,13 @@ function Dropzone() {
       const mainDeck = parseYDK(content);
       router.push(`/deck/${mainDeck}`);
 
-      toast.success("File uploaded successfully!", { id: toastId });
+      toast.dismiss(toastId);
     } catch (error) {
       // Handle the error here, you might want to log it or display an error message
       console.error("An error occurred while processing the file:", error);
     } finally {
       setLoading(false);
+      toast.success("File loaded successfully!");
     }
   }
 
