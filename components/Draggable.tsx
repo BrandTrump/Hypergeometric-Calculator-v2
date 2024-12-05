@@ -3,13 +3,12 @@ import { useDraggable } from "@dnd-kit/core";
 import React from "react";
 
 type DraggableProps = {
-  children: React.ReactNode;
-  id: string;
+  card: CardData;
 };
 
-export default function Draggable({ children, id }: DraggableProps) {
+export default function Draggable({ card }: DraggableProps) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: id,
+    id: card.id,
   });
   const style = transform
     ? {
@@ -22,9 +21,9 @@ export default function Draggable({ children, id }: DraggableProps) {
       style={style}
       {...listeners}
       {...attributes}
-      className="border border-[#cbfd00] bg-[#cbfd00]/10 md:px-3 py-2"
+      className="border border-[#cbfd00] bg-[#cbfd00]/10 md:px-3 py-2 cursor-grab active:cursor-grabbing text-center"
     >
-      {children}
+      <p>{card.name}</p>
     </div>
   );
 }

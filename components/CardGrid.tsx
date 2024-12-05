@@ -8,7 +8,7 @@ import { getDuplicates } from "@/helpers/getDuplicates";
 import { useEffect } from "react";
 
 interface CardGridProps {
-  cardData: CardInformation;
+  cardData: CardData[];
   deckSize: number;
   cardIds: string[];
 }
@@ -33,7 +33,7 @@ function CardGrid({ cardData, deckSize, cardIds }: CardGridProps) {
           <p className="font-semibold text-white ml-12">{deckSize}</p>
         </div>
         <section className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-6 p-3 max-h-96 overflow-y-auto md:max-h-full">
-          {cardData.data.map((card: CardData) => (
+          {cardData.map((card: CardData) => (
             <div key={card.id}>
               <h1
                 onClick={() => setCardPreview(card)}

@@ -26,8 +26,5 @@ interface CardData {
   attribute: string;
   card_images: CardImage[];
   card_prices: CardPrices[];
-}
-
-interface CardInformation {
-  data: CardData[];
+  status: string;
 }

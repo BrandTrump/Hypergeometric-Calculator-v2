@@ -38,7 +38,7 @@ function Dropzone() {
 
       const content = e.target.result;
       const mainDeck = parseYDK(content);
-      router.prefetch(`/deck/${mainDeck}`);
+      router.push(`/deck/${mainDeck}`);
     } catch (error) {
       // Handle the error here, you might want to log it or display an error message
       console.error("An error occurred while processing the file:", error);

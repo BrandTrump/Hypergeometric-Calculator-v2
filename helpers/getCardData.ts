@@ -7,5 +7,9 @@ export async function getCardData(cardId: string) {
     throw new Error("Failed to fetch data");
   }
 
-  return res.json();
+  const data = await res.json();
+
+  const updatedData = data.data.map((card: any) => ({ ...card, status: "A" }));
+
+  return updatedData;
 }
